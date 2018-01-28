@@ -33,8 +33,10 @@ Hi! This project consists of doing an ETL for a CSV file that contains the infor
 ## Questions
 
 1. **How would you deploy the app?**
-    This depends on what is available to work with, for instance, this file could live on a local server that runs the script and then serve it on the local network. 
-    Another way is to upload it to an Amazon Ec2 or Amazon Lambda. The script is easly configurable to allow the passing of the "raw_data file" as an argument and then with a modification of the SQLAlchemy connection you can point it to a remote database and store the information in another service like Amazon RDS or Sqlite3 running in the same server or some Postgresql or Mysql server.    
+    This depends on what is available to work with, for instance: 
+* This repo could live on a local server that runs the script and then serve it on the local network. 
+* Another way is to upload it to an Amazon EC2 or Amazon Lambda (or any other server that runs Python). The script is easly configurable to allow the passing of the "raw_data file" as an argument and then with a modification of the SQLAlchemy connection you can point it to a remote database and store the information in another service like Amazon RDS or Sqlite3 running in the same server or some Postgresql or Mysql server.
+* Another way may be to allow the Flask server to receive upload files and the configure it to do the task. Because the task of processing the file takes aprox 12 sec, it will we recommended to receive the file and then using celery or another queue system runs it asyncronously.
 2. **How to schedule the ETL job?**
     Schedule the ETL job depends on how the "raw_data file" will be updated. For instance, we could have a independent process that runs every 24h (starts running at 9am every day) and update the "raw_data file" then, we could run `client_reader` every 24h at 11am. This way we we would have the data updated every day for noon. 
     If we like to see how each customer updates his clv we will need to do another database models, because we are only saving the predicted CLV, then we will need to store orders as well on the database and then obtain the results after each save. 
