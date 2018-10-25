@@ -15,7 +15,7 @@ Hi! This project consists of doing an ETL for a CSV file that contains the infor
 
 ### What you need
 
-1. Python 3.5 or 3.6
+1. Python 3.5 >+
 2. PIP
 3. Some browser or some REST client to test the API
 4. Some text editor to view the csv file.
@@ -24,8 +24,8 @@ Hi! This project consists of doing an ETL for a CSV file that contains the infor
 
 1. You will need all the requirements installed, To do that you will need to run `pip install -r requirements.txt`
 2. Its important that all files remains in the same folder.
-3. **First** you need to run `python client_reader.py`Which will read from the raw database and then transform and do the prediction. Then it will save the predictions on `exit.csv` file and on the database `database.db`which is a sqlite3 database that Flask can read.
-4. Last you would need to run `export FLASK_APP=server.py` and then `flask run`. With this two commands, you will have the Flask server running in the port 5000.
+3. You need to run `python client_reader.py` Which will read from the raw database, then transform and finally do the prediction. Then it will save the predictions on `exit.csv` file and on the database `database.db` which is a sqlite3 database that Flask can read.
+4. You need to run `export FLASK_APP=server.py` and then `flask run`. With this two commands, you will have the Flask server running in the port 5000.
 5. To retrieve the CLV prediction for any customer you will need their customer_id and with that enter to `localhost:5000/predictions/<customer_id>` <customer_id> should be replaced with the customer_id. If you enter a valid customer id, Flask will respond with a JSON containing the customer_id as user_id and the clv, otherwise, Flask will respond with a 404 HTTP error.
 6. After you run step #3, it will be available the file exit.csv. This file contains  a dump of the database but in a CSV format.
 7. To run the test you need to run `pytest`from the terminal.
@@ -42,6 +42,7 @@ Hi! This project consists of doing an ETL for a CSV file that contains the infor
     If we like to see how each customer updates his clv we will need to do another database models, because we are only saving the predicted CLV, then we will need to store orders as well on the database and then obtain the results after each save. 
 3. **How long it take you to finnish the assignment?**
     I take me around 4 hours to complete this task. Only the code part. I do spend more time writing this readme. 
+
 
 
 ### Problems and bug faced.
