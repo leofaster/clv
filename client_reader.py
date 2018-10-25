@@ -9,7 +9,6 @@ from server import db, User
 
 
 class Order:
-
     def __init__(
         self, order_id, order_item_id, num_items, revenue, created_at_date
     ):
@@ -43,7 +42,6 @@ class Order:
 
 
 class Storage:
-
     def __init__(self, today):
         self.today = today
         self.storage = defaultdict(list)
@@ -146,7 +144,6 @@ class Storage:
 
 
 def read_orders_from_file(storage, file='orders.csv'):
-
     with open(file, 'r+') as file:
         orders = csv.reader(file, delimiter=',')
         next(orders)  # skip the headers
