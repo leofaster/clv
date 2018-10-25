@@ -203,8 +203,8 @@ def fill_database(clients, predictions):
     '''
     fill the database that Flask will use.
     '''
-    for i, client in enumerate(clients):
-        user = User(id=client, clv=predictions[i])
+    for index, client in enumerate(clients):
+        user = User(id=client, clv=predictions[index])
         db.session.add(user)
     db.session.commit()
 
